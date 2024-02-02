@@ -1,0 +1,6 @@
+plan_id,list_price,effective_from
+free,0,2022-01-01
+basic,29,2022-01-01
+standard,49,2022-01-01
+premium,79,2022-01-01
+premium,89,2023-06-01
