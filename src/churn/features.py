@@ -23,3 +23,14 @@ def add_tenure_features(df: pd.DataFrame) -> pd.DataFrame:
     df["tenure_months"] = tenure_months(df["signup_date"])
     df["tenure_bucket"] = df["tenure_months"].map(tenure_bucket)
     return df
+
+
+def add_plan_features(df: pd.DataFrame, plans: pd.DataFrame) -> pd.DataFrame:
+    """Attach the list price of each customer's plan."""
+    return df.merge(plans[["plan_id", "list_price"]], on="plan_id", how="left")
+
+
+def build_features(customers: pd.DataFrame, plans: pd.DataFrame) -> pd.DataFrame:
+    df = add_tenure_features(customers)
+    df = add_plan_features(df, plans)
+    return df
