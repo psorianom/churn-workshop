@@ -15,3 +15,13 @@ def test_tenure_bucket_boundaries():
     assert tenure_bucket(12) == "12-23"
     assert tenure_bucket(23) == "12-23"
     assert tenure_bucket(24) == "24+"
+
+
+def test_merge_preserves_row_count():
+    from churn.clean import clean_customers
+    from churn.data import load_customers, load_plans
+    from churn.features import add_plan_features
+
+    customers = clean_customers(load_customers())
+    merged = add_plan_features(customers, load_plans())
+    assert len(merged) == len(customers)
