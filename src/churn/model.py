@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-NUMERIC = ["tenure_months", "monthly_charges", "usage_hours", "support_tickets", "late_payments", "list_price"]
+NUMERIC = ["tenure_months", "monthly_charges", "usage_hours", "support_tickets", "late_payments", "list_price", "region_avg_charges"]
 CATEGORICAL = ["contract", "plan_id", "tenure_bucket"]
 
 

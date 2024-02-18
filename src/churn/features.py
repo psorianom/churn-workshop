@@ -30,7 +30,17 @@ def add_plan_features(df: pd.DataFrame, plans: pd.DataFrame) -> pd.DataFrame:
     return df.merge(plans[["plan_id", "list_price"]], on="plan_id", how="left")
 
 
+def add_region_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Average monthly charges of each customer's region."""
+    df = df.copy()
+    df["region_avg_charges"] = (
+        df.groupby("region")["monthly_charges"].transform("mean").fillna(0)
+    )
+    return df
+
+
 def build_features(customers: pd.DataFrame, plans: pd.DataFrame) -> pd.DataFrame:
     df = add_tenure_features(customers)
     df = add_plan_features(df, plans)
+    df = add_region_features(df)
     return df
