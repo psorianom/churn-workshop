@@ -25,3 +25,15 @@ def test_merge_preserves_row_count():
     customers = clean_customers(load_customers())
     merged = add_plan_features(customers, load_plans())
     assert len(merged) == len(customers)
+
+
+def test_region_feature_for_missing_region():
+    from churn.clean import clean_customers
+    from churn.data import load_customers
+    from churn.features import add_region_features
+
+    customers = clean_customers(load_customers())
+    out = add_region_features(customers)
+    missing = customers["region"].isna()
+    assert missing.any()
+    assert (out.loc[missing, "region_avg_charges"] > 0).all()
