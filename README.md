@@ -11,3 +11,11 @@ pip install -r requirements.txt
 pytest
 python run.py
 ```
+
+## Pipeline
+
+1. `data.py` loads the raw customer and plan tables from `data/`
+2. `clean.py` normalizes text, removes duplicate ids and invalid rows
+3. `features.py` builds tenure, plan, region and ticket features
+4. `model.py` builds the feature matrix, splits, scales and trains a random forest
+5. `evaluate.py` reports AUC and accuracy on the held-out set
