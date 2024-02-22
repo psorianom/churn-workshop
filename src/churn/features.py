@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 AS_OF = pd.Timestamp("2024-01-01")
@@ -39,8 +40,16 @@ def add_region_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def add_ticket_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Support tickets per year of tenure."""
+    df = df.copy()
+    df["tickets_per_year"] = df["support_tickets"] / np.maximum(df["tenure_months"], 1) * 12
+    return df
+
+
 def build_features(customers: pd.DataFrame, plans: pd.DataFrame) -> pd.DataFrame:
     df = add_tenure_features(customers)
     df = add_plan_features(df, plans)
     df = add_region_features(df)
+    df = add_ticket_features(df)
     return df
