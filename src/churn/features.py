@@ -1,3 +1,5 @@
+"""Feature engineering for the churn model."""
+
 import numpy as np
 import pandas as pd
 

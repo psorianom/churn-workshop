@@ -1,3 +1,5 @@
+"""Cleaning of the raw customers table."""
+
 import pandas as pd
 
 
