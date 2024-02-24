@@ -26,7 +26,9 @@ def train_and_evaluate() -> dict:
 
 def main() -> None:
     m = train_and_evaluate()
-    print(f"AUC: {m['auc']:.3f}")
+    print(f"rows: raw={m['rows_raw']} clean={m['rows_clean']} features={m['rows_features']}")
+    print(f"churn rate: {m['churn_rate']:.3f}")
+    print(f"AUC: {m['auc']:.3f}  accuracy: {m['accuracy']:.3f}")
 
 
 if __name__ == "__main__":
