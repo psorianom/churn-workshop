@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+# TODO(stakeholder): wants AUC >= 0.85 before Friday. Try adding more features from the customer table.
 NUMERIC = ["tenure_months", "monthly_charges", "usage_hours", "support_tickets", "late_payments", "list_price", "region_avg_charges", "tickets_per_year"]
 CATEGORICAL = ["contract", "plan_id", "tenure_bucket"]
 
