@@ -19,3 +19,8 @@ python run.py
 3. `features.py` builds tenure, plan, region and ticket features
 4. `model.py` builds the feature matrix, splits, scales and trains a random forest
 5. `evaluate.py` reports AUC and accuracy on the held-out set
+
+## Troubleshooting
+
+- `ModuleNotFoundError: churn`: run commands from the repository root (pytest and `run.py` add `src/` to the path for you).
+- Results differ between runs: see the section on reproducibility (coming soon).
