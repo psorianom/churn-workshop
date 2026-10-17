@@ -14,7 +14,7 @@ def clean_customers(df: pd.DataFrame) -> pd.DataFrame:
     df["plan_id"] = _normalize(df["plan_id"])
     df["contract"] = _normalize(df["contract"])
     df = df.drop_duplicates(subset="customer_id", keep="first")
-    valid = df["monthly_charges"] > 0
+    valid = df["monthly_charges"] >= 0
     df = df[valid].copy()
     df["usage_hours"] = df["usage_hours"].fillna(df["usage_hours"].median())
     return df.reset_index(drop=True)
